@@ -1,5 +1,6 @@
 package KU.BetterReciper.service;
 
+import KU.BetterReciper.dto.SignupDto;
 import KU.BetterReciper.model.Member;
 import KU.BetterReciper.repository.MemberRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,7 +20,7 @@ public class SignupService {
         return repository.findByUsername(username) == null;
     }
 
-    public int createMember(Member member) {
+    public int createMember(SignupDto member) {
         Member newMember = new Member();
         newMember.setFirstName(member.getFirstName());
         newMember.setLastName(member.getLastName());

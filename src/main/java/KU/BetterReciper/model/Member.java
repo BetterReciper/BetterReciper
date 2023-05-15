@@ -8,12 +8,13 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Convert(converter = AttributeConverter.class)
+//    @Convert(converter = AttributeConverter.class)
     private String username;
     private String password;
-    @Convert(converter = AttributeConverter.class)
+//    @Convert(converter = AttributeConverter.class)
     private String firstName;
     private String lastName;
+    private String email;
 
     // .... generate getter/setter for all attributes
 
