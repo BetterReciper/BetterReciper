@@ -32,6 +32,9 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .and()
+                .oauth2Login()
+                .defaultSuccessUrl("/home", true)
+                .and()
                 .sessionManagement()
                 .invalidSessionUrl("/login");;
 
