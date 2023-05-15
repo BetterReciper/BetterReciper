@@ -34,8 +34,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
+                .cors().and()
                 .csrf().disable()
 
                 .authorizeRequests()
@@ -44,6 +43,8 @@ public class SecurityConfig {
                 .hasAuthority("SCOPE_read:recipe")
                 .mvcMatchers(HttpMethod.POST, "/api/recipe")
                 .hasAuthority("SCOPE_create:recipe")
+                .mvcMatchers(HttpMethod.DELETE, "api/recipe")
+                .hasAuthority("SCOPE_delete:recipe")
 
                 .antMatchers("/home", "/api/**", "/signup", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
