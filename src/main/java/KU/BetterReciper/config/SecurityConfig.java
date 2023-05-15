@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .hasAuthority("SCOPE_read:recipe")
                 .mvcMatchers(HttpMethod.POST, "/api/recipe")
                 .hasAuthority("SCOPE_create:recipe")
-                .mvcMatchers(HttpMethod.DELETE, "api/recipe")
+                .mvcMatchers(HttpMethod.DELETE, "api/recipe/{id}")
                 .hasAuthority("SCOPE_delete:recipe")
 
                 .antMatchers("/home", "/api/**", "/signup", "/css/**", "/js/**").permitAll()
