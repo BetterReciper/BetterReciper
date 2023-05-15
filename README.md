@@ -45,5 +45,26 @@ docker run --name=better-reciper -e MYSQL_ROOT_PASSWORD=abc123 -e MYSQL_DATABASE
 5. Run a Spring Boot application using this command.
 ```bash
 mvn spring-boot:run
+```  
+## API Path  
+### Base URL  
 ```
+http://localhost:8080
+```
+you can change PORT in application.properties.  
+```
+server.port=8080
+```
+For get the recipe.  
+```
+/api/recipe
+```
+For create the recipe.  
+```
+/api/recipe
+```  
+For delete the recipe.
+```  
+/api/recipe/{id}
+```  
 
