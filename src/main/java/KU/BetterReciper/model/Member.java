@@ -1,17 +1,32 @@
 package KU.BetterReciper.model;
-
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.util.UUID;
+import org.hibernate.annotations.ColumnTransformer;
+
+import javax.persistence.Column;
 
 @Entity
+@Data
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    @Convert(converter = AttributeConverter.class)
+    @Column(columnDefinition="VARBINARY(256)")
+    @ColumnTransformer(
+            read = "cast(AES_DECRYPT(username, UNHEX('key')) as char(255))",
+            write = "AES_ENCRYPT(?, UNHEX('key'))"
+    )
     private String username;
     private String password;
-//    @Convert(converter = AttributeConverter.class)
+    @Column(columnDefinition="VARBINARY(256)")
+    @ColumnTransformer(
+            read = "cast(AES_DECRYPT(username, UNHEX('key')) as char(255))",
+            write = "AES_ENCRYPT(?, UNHEX('key'))"
+    )
     private String firstName;
     private String lastName;
     private String email;
