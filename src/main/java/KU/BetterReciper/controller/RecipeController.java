@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:8080/api/recipe")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/recipe")
 public class RecipeController {
