@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
+
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/recipe")
@@ -32,5 +34,15 @@ public class RecipeController {
 
         service.addRecipe(recipe);
         return new ResponseEntity(recipe, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable UUID id) {
+        Recipe recipe = service.getRecipeById(id);
+        if (recipe == null) {
+            return new ResponseEntity("Recipe not found", HttpStatus.NOT_FOUND);
+        }
+        service.deleteRecipe(recipe);
+        return new ResponseEntity("Recipe deleted successfully", HttpStatus.OK);
     }
 }
